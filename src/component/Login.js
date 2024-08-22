@@ -9,7 +9,7 @@ const Login = (props) => {
  const handleLogin=()=>{
   const Userdata= JSON.parse(localStorage.getItem("users"))
   if(Userdata){
-    if(logindata.username===Userdata.email && logindata.password===Userdata.password){
+    if(logindata.username==Userdata.email && logindata.password==Userdata.password){
       alert("valid")
     }
     else{
