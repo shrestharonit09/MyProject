@@ -27,7 +27,7 @@ const Signup = (props) => {
     if (data.CRPassword !== data.COPassword) {
       setPasswordvalidation("password should be matched");
     } else setPasswordvalidation("");
-    if(data.phone.length==10 && data.CRPassword===data.COPassword){
+    if(data.phone.length==10 && data.CRPassword==data.COPassword){
       localStorage.setItem("users",JSON.stringify({
        email:data.Email,
        password:data.CRPassword 
