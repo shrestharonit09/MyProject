@@ -5,6 +5,7 @@ const Login = (props) => {
     username: "",
     password: "",
   });
+  const[usernamerequired, setUsernamerequired]=useState("")
 
  const handleLogin=()=>{
   const Userdata= JSON.parse(localStorage.getItem("users"))
@@ -21,10 +22,19 @@ const Login = (props) => {
     alert("not valid user")
   }
  }
+ const handleForgetpassword=()=>{
+  const Userdata= JSON.parse(localStorage.getItem("users"))
+  if(logindata.username && logindata.username===Userdata.email){
+    props.reset()
+  }else{
+    setUsernamerequired("Valid Username required before reseting password")
+  }
+ }
   return (
     <div className="flex justify-center h-screen items-center">
       <div className="w-1/4 shadow-lg bg-gray-200 rounded-lg">
         <div className="flex flex-col p-4 gap-2">
+          <h1 className="text-3xl text-center font-semibold">Login</h1>
           <label className="text-gray-600" htmlFor="Username">
             Username
           </label>
@@ -37,6 +47,7 @@ const Login = (props) => {
             }
             required
           />
+          <p  className="text-sm text-red-600">{usernamerequired}</p>
           <label className="text-gray-600" htmlFor="Password">
             Password
           </label>
@@ -52,7 +63,7 @@ const Login = (props) => {
           <button className="bg-blue-500 p-1 rounded-lg text-white"onClick={handleLogin}>
             Login
           </button>
-          <button className="p-2 text-blue-600 border-b border-gray-300">
+          <button className="p-2 text-blue-600 border-b border-gray-300"onClick={handleForgetpassword}>
             Forget Passowrd ?
           </button>
           <button

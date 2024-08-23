@@ -10,15 +10,17 @@ const Signup = (props) => {
     CRPassword: "",
     COPassword: "",
   });
-  
+
   const [validatephone, setValidatephone] = useState("");
   const [validatepassword, setPasswordvalidation] = useState("");
   const handleClick = () => {
-    setData({
-      ...data,
-      firstname: data.firstname[0].toUpperCase() + data.firstname.slice(1),
-      surname: data.surname[0].toUpperCase() + data.surname.slice(1),
-    });
+    if (data.firstname && data.surname) {
+      setData({
+        ...data,
+        firstname: data.firstname[0].toUpperCase() + data.firstname.slice(1),
+        surname: data.surname[0].toUpperCase() + data.surname.slice(1),
+      });
+    }
 
     if (data.phone.length !== 10) {
       setValidatephone("phone number must be equal to 10 digit");
@@ -27,13 +29,27 @@ const Signup = (props) => {
     if (data.CRPassword !== data.COPassword) {
       setPasswordvalidation("password should be matched");
     } else setPasswordvalidation("");
-    if(data.phone.length===10 && data.CRPassword===data.COPassword){
-      localStorage.setItem("users",JSON.stringify({
-       email:data.Email,
-       password:data.CRPassword 
-      }))
-      props.login();
 
+    if (
+      data.phone.length === 10 &&
+      data.CRPassword === data.COPassword &&
+      data.firstname &&
+      data.surname &&
+      data.Address &&
+      data.Email
+    ) {
+      localStorage.setItem(
+        "users",
+        JSON.stringify({
+          email: data.Email,
+          password: data.CRPassword,
+          phone:data.phone,
+        })
+      );
+      props.login();
+    }
+    else{
+      alert("fields shouldnot be empty")
     }
   };
   return (
