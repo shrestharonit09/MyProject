@@ -1,17 +1,22 @@
 import React, { useState } from "react";
+import {useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [logindata, setLogindata] = useState({
     username: "",
     password: "",
   });
+
   const[usernamerequired, setUsernamerequired]=useState("")
+  const navigate=useNavigate()
+  
 
  const handleLogin=()=>{
   const Userdata= JSON.parse(localStorage.getItem("users"))
   if(Userdata){
     if(logindata.username===Userdata.email && logindata.password===Userdata.password){
       alert("valid")
+      navigate("/crud");
     }
     else{
       alert("invalid")
