@@ -14,8 +14,8 @@ const Crudoperation= () => {
   const handleClicked = () => {
     const { ID, Name, Address, Age } = ims; //destructing methods that takes the value of ims as a object data
 
-    if (ims.ID && ims.Address && ims.Age && ims.Name) {
-      if (newdata.some((items) => items.ID == ID)) {
+    if (ID && Address && Age && Name) {
+      if (newdata.some((items) => items.ID === ID)) {
         //to validate if previous ID is already exist
         alert("ID Already Exist, ID Should be Unique");
       } else {
@@ -32,8 +32,8 @@ const Crudoperation= () => {
     }
   };
   const handleEdit = (id) => {
-    const edit = newdata.find((value) => value.ID == id);
-    if (edit != undefined) {
+    const edit = newdata.find((value) => value.ID === id);
+    if (edit!==undefined) {
       setIMS({
         ID: edit.ID,
         Name: edit.Name,
@@ -55,7 +55,7 @@ const Crudoperation= () => {
     });
   };
   const handleDelete = (id) => {
-    const deletes = newdata.filter((value) => value.ID != id);
+    const deletes = newdata.filter((value) => value.ID !== id);
     setNewdata(deletes);
   };
   return (
