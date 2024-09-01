@@ -42,7 +42,7 @@ const Crudoperation = () => {
       });
     }
     setNewdata((previousdata) =>
-      previousdata.map((item) => (item.ID == ims.ID ? ims : item))
+      previousdata.map((item) => (item.ID === ims.ID ? ims : item))
     );
     setIsedit(true);
   };
