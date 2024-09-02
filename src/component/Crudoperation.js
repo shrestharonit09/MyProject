@@ -12,6 +12,7 @@ const Crudoperation = () => {
   const [newdata, setNewdata] = useState([]);
   const [isEdit, setIsedit] = useState(false); // first ma submit dekhaune ..
   const [cards, setCard] = useState();
+  const [showcard, setShowcard] = useState(false);
 
   const handleClicked = () => {
     const { ID, Name, Address, Age } = ims; //destructing methods that takes the value of ims as a object data
@@ -57,6 +58,7 @@ const Crudoperation = () => {
   const handleView = (id) => {
     const user = newdata.find((value) => value.ID === id);
     setCard(user);
+    setShowcard(!showcard);
   };
 
   return (
@@ -188,16 +190,23 @@ const Crudoperation = () => {
           </table>
         </div>
       </div>
-      <div>
-        {cards && (
-          <Card
-            ID={cards?.ID ? cards.ID : "1"}
-            Name={cards?.Name ? cards.Name : "Ronit Shrestha"}
-            Address={cards?.Address ? cards.Address : "bhaktapur"}
-            Age={cards?.Age ? cards.Age : "24"}
-          />
-        )}
-      </div>
+      {showcard ? (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+          onClick={handleView}
+        >
+          {cards && (
+            <Card
+              ID={cards?.ID ? cards.ID : "1"}
+              Name={cards?.Name ? cards.Name : "Ronit Shrestha"}
+              Address={cards?.Address ? cards.Address : "bhaktapur"}
+              Age={cards?.Age ? cards.Age : "24"}
+            />
+          )}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
