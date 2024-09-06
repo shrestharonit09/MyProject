@@ -3,7 +3,7 @@ import {useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [logindata, setLogindata] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -14,7 +14,7 @@ const Login = (props) => {
  const handleLogin=()=>{
   const Userdata= JSON.parse(localStorage.getItem("users"))
   if(Userdata){
-    if(logindata.username===Userdata.email && logindata.password===Userdata.password){
+    if(logindata.email===Userdata.email && logindata.password===Userdata.password){
       alert("valid")
       navigate("/crud");
     }
@@ -29,7 +29,7 @@ const Login = (props) => {
  }
  const handleForgetpassword=()=>{
   const Userdata= JSON.parse(localStorage.getItem("users"))
-  if(logindata.username && logindata.username===Userdata.email){
+  if(logindata.email && logindata.email===Userdata.email){
     props.reset()
   }else{
     setUsernamerequired("Valid Username required before reseting password")
@@ -41,14 +41,14 @@ const Login = (props) => {
         <div className="flex flex-col p-4 gap-2">
           <h1 className="text-3xl text-center font-semibold">Login</h1>
           <label className="text-gray-600" htmlFor="Username">
-            Username
+            Email
           </label>
           <input
             type="text"
             className="rounded-lg h-8"
-            value={logindata.username}
+            value={logindata.email}
             onChange={(event) =>
-              setLogindata({ ...logindata, username: event.target.value })
+              setLogindata({ ...logindata, email: event.target.value })
             }
             required
           />

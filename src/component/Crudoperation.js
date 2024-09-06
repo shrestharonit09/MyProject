@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import Card from "./Card";
 
 const Crudoperation = () => {
@@ -7,12 +8,35 @@ const Crudoperation = () => {
     Name: "",
     Address: "",
     Age: "",
+    Image: "",
   });
 
   const [newdata, setNewdata] = useState([]);
   const [isEdit, setIsedit] = useState(false); // first ma submit dekhaune ..
   const [cards, setCard] = useState();
   const [showcard, setShowcard] = useState(false);
+
+  useEffect(() => {
+    if (ims.Image && ims.Image instanceof Blob) {
+      setIMS((prevdata) => ({
+        ...prevdata,
+        Image: URL.createObjectURL(ims.Image),
+      }));
+      return () => {
+        URL.revokeObjectURL(URL.createObjectURL(ims.Image));
+      };
+    }
+  }, [ims.Image]);
+
+  const handleClear = () => {
+    setIMS({
+      ID: "",
+      Name: "",
+      Address: "",
+      Age: "",
+      Image: "",
+    });
+  };
 
   const handleClicked = () => {
     const { ID, Name, Address, Age } = ims; //destructing methods that takes the value of ims as a object data
@@ -21,12 +45,7 @@ const Crudoperation = () => {
         alert("ID Already Exist, ID Should be Unique");
       } else {
         setNewdata([...newdata, ims]);
-        setIMS({
-          ID: "",
-          Name: "",
-          Address: "",
-          Age: "",
-        });
+        handleClear();
       }
     } else {
       alert("please fill all the fields");
@@ -40,6 +59,7 @@ const Crudoperation = () => {
         Name: edit.Name,
         Address: edit.Address,
         Age: edit.Age,
+        Image: edit.Image
       });
     }
     setNewdata((previousdata) =>
@@ -121,6 +141,18 @@ const Crudoperation = () => {
               type="number"
               required
             />
+            <label className="text-xl font-semibold text-white" htmlFor="Image">
+              Image
+            </label>
+            <img src={ims.Image} alt="" />
+            <input
+              type="file"
+              onChange={(event) =>
+                setIMS({ ...ims, Image: event.target.files[0] })
+              }
+              required
+            />
+
             <div className="flex justify-center">
               {isEdit ? (
                 <button
@@ -154,6 +186,7 @@ const Crudoperation = () => {
                 <th className="text-left p-4">Address</th>
                 <th className="text-left p-4">Age</th>
                 <th className="text-center p-4">Action</th>
+                <th className="text-center p-4">Image</th>
               </tr>
             </thead>
             <tbody>
@@ -184,6 +217,15 @@ const Crudoperation = () => {
                       View
                     </button>
                   </td>
+                  <td>
+                    <div className="flex justify-end mr-6">
+                      <img
+                        src={items.Image}
+                        alt="userimage"
+                        className="h-12 w-12"
+                      />
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -201,6 +243,7 @@ const Crudoperation = () => {
               Name={cards?.Name ? cards.Name : "Ronit Shrestha"}
               Address={cards?.Address ? cards.Address : "bhaktapur"}
               Age={cards?.Age ? cards.Age : "24"}
+              Image={cards?.Image ? cards.Image : ""}
             />
           )}
         </div>
