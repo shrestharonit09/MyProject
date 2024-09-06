@@ -32,7 +32,7 @@ const Card = (props) => {
           </h1>
         </div>
         <div className="flex justify-center">
-          <img className="w-32 h-32 " src={props.Image} alt="Image" />
+          <img className="w-32 h-32 " src={props.Image} alt="userpicture" />
         </div>
         <div className="flex">
           <div className="flex flex-col px-12 gap-2 text-blue-900 font-semibold">
