@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
@@ -36,23 +36,23 @@ const Login = (props) => {
   };
    
   //reponsive..
-  const [width, setWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
+  // const [width, setWidth] = useState(window.innerWidth);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setWidth(window.innerWidth);
+  //   };
 
-    window.addEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-  console.log(width);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
+  // console.log(width);
 
   return (
     <div className="flex justify-center h-screen items-center">
-      <div className={`${width<431?"w-1/2":"w-1/2 md:w-1/4 xl:w-1/4"} shadow-lg bg-gray-200 rounded-lg`}>
+      <div className="w-1/2 md:w-1/3 lg:w-1/4 shadow-lg bg-gray-200 rounded-lg">
         <div className="flex flex-col p-4 gap-2">
           <h1 className="text-3xl text-center font-semibold">Login</h1>
           <label className="text-gray-600" htmlFor="Username">
@@ -81,19 +81,19 @@ const Login = (props) => {
             required
           />
           <button
-            className="bg-blue-500 p-1 rounded-lg text-white"
+            className="bg-blue-500 py-1 rounded-lg text-white font-semibold text-xl hover:bg-blue-600"
             onClick={handleLogin}
           >
-            Login
+            Log in
           </button>
           <button
-            className="p-2 text-blue-600 border-b border-gray-300"
+            className="p-2 text-blue-600 border-b border-gray-300 hover:underline"
             onClick={handleForgetpassword}
           >
             Forget Passowrd ?
           </button>
           <button
-            className="p-1 bg-green-500 text-white font-semibold w-1/2 mx-auto rounded-lg"
+            className="p-1 bg-green-500 text-white font-semibold w-1/2 mx-auto rounded-lg hover:bg-green-600"
             onClick={props.signup}
           >
             Create new account
