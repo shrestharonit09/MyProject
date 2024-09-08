@@ -39,8 +39,8 @@ const Crudoperation = () => {
   };
 
   const handleClicked = () => {
-    const { ID, Name, Address, Age } = ims; //destructing methods that takes the value of ims as a object data
-    if (ID && Address && Age && Name) {
+    const { ID, Name, Address, Age, Image } = ims; //destructing methods that takes the value of ims as a object data
+    if (ID && Address && Age && Name && Image) {
       if (newdata.some((items) => items.ID === ID)) {
         alert("ID Already Exist, ID Should be Unique");
       } else {
@@ -59,7 +59,7 @@ const Crudoperation = () => {
         Name: edit.Name,
         Address: edit.Address,
         Age: edit.Age,
-        Image: edit.Image
+        Image: edit.Image,
       });
     }
     setNewdata((previousdata) =>
@@ -82,174 +82,174 @@ const Crudoperation = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-around mt-4 ">
-        <div className="w-1/3">
-          <div className="flex flex-col gap-6 p-8 rounded-lg bg-blue-500 shadow-lg">
-            <h1 className="text-3xl bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 font-bold mb-4 bg-clip-text text-transparent text-center">
-              Information Management System
-            </h1>
-            <label className=" text-xl font-semibold text-white" htmlFor="id">
-              ID
-            </label>
-            <input
-              className="rounded-lg h-8 px-2"
-              value={ims.ID}
-              onChange={(event) => setIMS({ ...ims, ID: event.target.value })}
-              placeholder="ID"
-              type="number"
-              required
-            />
-
-            <label className=" text-xl font-semibold text-white" htmlFor="Name">
-              Name
-            </label>
-            <input
-              className="rounded-lg h-8 px-2"
-              value={ims.Name}
-              onChange={(event) => setIMS({ ...ims, Name: event.target.value })}
-              placeholder="Name"
-              type="text"
-              required
-            />
-
-            <label
-              className=" text-xl font-semibold text-white"
-              htmlFor="Address"
-            >
-              Address
-            </label>
-            <input
-              className="rounded-lg h-8 px-2"
-              value={ims.Address}
-              onChange={(event) =>
-                setIMS({ ...ims, Address: event.target.value })
-              }
-              placeholder="Address"
-              type="text"
-              required
-            />
-
-            <label className=" text-xl font-semibold text-white" htmlFor="age">
-              Age
-            </label>
-            <input
-              className="rounded-lg h-8 px-2"
-              value={ims.Age}
-              onChange={(event) => setIMS({ ...ims, Age: event.target.value })}
-              placeholder="Age"
-              type="number"
-              required
-            />
-            <label className="text-xl font-semibold text-white" htmlFor="Image">
-              Image
-            </label>
-            <img src={ims.Image} alt="" />
-            <input
-              type="file"
-              onChange={(event) =>
-                setIMS({ ...ims, Image: event.target.files[0] })
-              }
-              required
-            />
-
-            <div className="flex justify-center">
-              {isEdit ? (
-                <button
-                  className="rounded-lg bg-green-500 text-white font-semibold w-1/2 px-2 py-1 text-xl"
-                  onClick={handleUpdateEdit}
-                >
-                  UpdateEdit
-                </button>
+    <div className="min-h-screen bg-gray-100">
+      <div className="flex justify-center">
+        <div className="flex flex-col gap-8 mt-8">
+          <h1 className="text-xl font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Let's fill the form to generate the individual card. Happy coding!!!
+          </h1>
+          <div className="flex justify-center">
+            <div className="flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-white border border-white">
+              <h1 className="text-3xl bg-gradient-to-r from-teal-400 via-blue-500 to-blue-700 font-bold mb-4 bg-clip-text text-transparent text-center mt-4">
+                Identity Card
+              </h1>
+              <input
+                className="rounded-lg p-2 border border-gray-300"
+                value={ims.ID}
+                onChange={(event) => setIMS({ ...ims, ID: event.target.value })}
+                placeholder="ID"
+                type="number"
+                required
+              />
+              <input
+                className="rounded-lg p-2 border border-gray-300"
+                value={ims.Name}
+                onChange={(event) =>
+                  setIMS({ ...ims, Name: event.target.value })
+                }
+                placeholder="Name"
+                type="text"
+                required
+              />
+              <input
+                className="rounded-lg p-2 border border-gray-300"
+                value={ims.Address}
+                onChange={(event) =>
+                  setIMS({ ...ims, Address: event.target.value })
+                }
+                placeholder="Address"
+                type="text"
+                required
+              />
+              <input
+                className="rounded-lg p-2 border border-gray-300"
+                value={ims.Age}
+                onChange={(event) =>
+                  setIMS({ ...ims, Age: event.target.value })
+                }
+                placeholder="Age"
+                type="number"
+                required
+              />
+              {ims.Image ? (
+                <div className="flex justify-center items-center">
+                  <img
+                    className="h-16 w-16 rounded-lg shadow-lg"
+                    src={ims.Image}
+                    alt="UserKoImage"
+                  />
+                </div>
               ) : (
-                <button
-                  className="rounded-lg bg-green-500 text-white font-semibold w-1/2 px-2 py-1 text-xl"
-                  onClick={handleClicked}
-                >
-                  Submit
-                </button>
+                ""
               )}
+              <input
+                className="border border-gray-300 p-2 rounded-lg"
+                type="file"
+                onChange={(event) =>
+                  setIMS({ ...ims, Image: event.target.files[0] })
+                }
+                required
+              />
+
+              <div className="flex justify-center">
+                {isEdit ? (
+                  <button
+                    className="rounded-lg bg-green-500 text-white font-semibold w-1/2 px-2 py-1 text-xl"
+                    onClick={handleUpdateEdit}
+                  >
+                    UpdateEdit
+                  </button>
+                ) : (
+                  <button
+                    className="rounded-lg bg-blue-500 text-white font-semibold w-1/2 px-2 py-1 text-xl mb-4 hover:bg-blue-600"
+                    onClick={handleClicked}
+                  >
+                    Submit
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="w-1/2">
-          <div className="bg-gray-200 shadow-lg border border-gray-300 w-full p-2 flex justify-center">
-            <h1 className="font-semibold text-xl">List of register users</h1>
-          </div>
-
-          <table className="table-auto w-full">
-            <thead>
-              <tr className="border border-gray-200 text-lg">
-                <th className="text-left p-4">S.NO</th>
-                <th className="text-left p-4">ID</th>
-                <th className="text-left p-4">Name</th>
-                <th className="text-left p-4">Address</th>
-                <th className="text-left p-4">Age</th>
-                <th className="text-center p-4">Action</th>
-                <th className="text-center p-4">Image</th>
-              </tr>
-            </thead>
-            <tbody>
-              {newdata.map((items, index) => (
-                <tr className="border border-gray-200" key={index}>
-                  <td className="text-lg text-left p-4">{index + 1}</td>
-                  <td className="text-lg text-left p-4">{items.ID}</td>
-                  <td className="text-lg text-left p-4">{items.Name}</td>
-                  <td className="text-lg text-left p-4">{items.Address}</td>
-                  <td className="text-lg text-left p-4">{items.Age}</td>
-                  <td className="flex justify-around mt-2">
-                    <button
-                      className="bg-green-500 rounded-lg p-2 text-xl"
-                      onClick={() => handleEdit(items.ID)}
-                    >
-                      edit
-                    </button>
-                    <button
-                      className="bg-red-500 rounded-lg text-xl p-2"
-                      onClick={() => handleDelete(items.ID)}
-                    >
-                      delete
-                    </button>
-                    <button
-                      className="bg-blue-500 rounded-lg text-xl p-2"
-                      onClick={() => handleView(items.ID)}
-                    >
-                      View
-                    </button>
-                  </td>
-                  <td>
-                    <div className="flex justify-end mr-6">
-                      <img
-                        src={items.Image}
-                        alt="userimage"
-                        className="h-12 w-12"
-                      />
-                    </div>
-                  </td>
+          <div className="w-full">
+            <div className="bg-blue-500 shadow-lg rounded-t-lg w-full p-2 flex justify-center">
+              <h1 className="font-semibold text-xl text-white">
+                List of register users
+              </h1>
+            </div>
+            <table className="table-auto w-full">
+              <thead>
+                <tr className="border border-gray-200 bg-white text-lg text-gray-500">
+                  <th className="text-left p-4">S.NO</th>
+                  <th className="text-left p-4">ID</th>
+                  <th className="text-left p-4">Name</th>
+                  <th className="text-left p-4">Address</th>
+                  <th className="text-left p-4">Age</th>
+                  <th className="text-center p-4">Action</th>
+                  <th className="text-center p-4">Image</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {newdata.map((items, index) => (
+                  <tr className="border border-gray-200 bg-white" key={index}>
+                    <td className="text-lg text-left p-4">{index + 1}</td>
+                    <td className="text-lg text-left p-4">{items.ID}</td>
+                    <td className="text-lg text-left p-4">{items.Name}</td>
+                    <td className="text-lg text-left p-4">{items.Address}</td>
+                    <td className="text-lg text-left p-4">{items.Age}</td>
+                    <td className="flex gap-2 mt-2">
+                      <button
+                        className="bg-green-500 rounded-lg p-2 text-xl"
+                        onClick={() => handleEdit(items.ID)}
+                      >
+                        edit
+                      </button>
+                      <button
+                        className="bg-red-500 rounded-lg text-xl p-2"
+                        onClick={() => handleDelete(items.ID)}
+                      >
+                        delete
+                      </button>
+                      <button
+                        className="bg-blue-500 rounded-lg text-xl p-2"
+                        onClick={() => handleView(items.ID)}
+                      >
+                        View
+                      </button>
+                    </td>
+                    <td>
+                      <div className="flex justify-center">
+                        <img
+                          src={items.Image}
+                          alt="userimage"
+                          className="h-12 w-12 rounded-lg"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
+        {showcard ? (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+            onClick={handleView}
+          >
+            {cards && (
+              <Card
+                ID={cards?.ID ? cards.ID : "1"}
+                Name={cards?.Name ? cards.Name : "Ronit Shrestha"}
+                Address={cards?.Address ? cards.Address : "bhaktapur"}
+                Age={cards?.Age ? cards.Age : "24"}
+                Image={cards?.Image ? cards.Image : ""}
+              />
+            )}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
-      {showcard ? (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-          onClick={handleView}
-        >
-          {cards && (
-            <Card
-              ID={cards?.ID ? cards.ID : "1"}
-              Name={cards?.Name ? cards.Name : "Ronit Shrestha"}
-              Address={cards?.Address ? cards.Address : "bhaktapur"}
-              Age={cards?.Age ? cards.Age : "24"}
-              Image={cards?.Image ? cards.Image : ""}
-            />
-          )}
-        </div>
-      ) : (
-        ""
-      )}
     </div>
   );
 };
