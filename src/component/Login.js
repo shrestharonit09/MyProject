@@ -51,8 +51,8 @@ const Login = (props) => {
   // console.log(width);
 
   return (
-    <div className="flex justify-center h-screen items-center">
-      <div className="w-1/2 md:w-1/3 lg:w-1/4 shadow-lg bg-gray-200 rounded-lg">
+    <div className="flex justify-center min-h-screen items-center bg-gray-100">
+      <div className="w-2/3 md:w-1/3 lg:w-1/4 shadow-lg bg-white rounded-lg">
         <div className="flex flex-col p-4 gap-2">
           <h1 className="text-3xl text-center font-semibold">Login</h1>
           <label className="text-gray-600" htmlFor="Username">
@@ -60,7 +60,7 @@ const Login = (props) => {
           </label>
           <input
             type="text"
-            className="rounded-lg h-8"
+            className="rounded-lg p-2 border border-gray-300"
             value={logindata.email}
             onChange={(event) =>
               setLogindata({ ...logindata, email: event.target.value })
@@ -72,7 +72,7 @@ const Login = (props) => {
             Password
           </label>
           <input
-            className="rounded-lg h-8"
+            className="rounded-lg p-2 border border-gray-300"
             type="password"
             value={logindata.password}
             onChange={(event) =>
@@ -93,7 +93,7 @@ const Login = (props) => {
             Forget Passowrd ?
           </button>
           <button
-            className="p-1 bg-green-500 text-white font-semibold w-1/2 mx-auto rounded-lg hover:bg-green-600"
+            className="p-1 bg-green-500 text-white font-semibold w-3/5 mx-auto rounded-lg hover:bg-green-600"
             onClick={props.signup}
           >
             Create new account
