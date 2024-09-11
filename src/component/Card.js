@@ -22,15 +22,24 @@ const Card = (props) => {
       >
         <PiDownloadSimpleBold size={24} />
       </button>
-      <div className="bg-gradient-to-b from-blue-100 via-white to-blue-300 rounded-lg shadow-lg flex flex-col gap-2">
-        <div className="flex gap-4 lg:gap-8 m-2">
+      <div className="bg-gradient-to-b from-blue-100 via-white to-blue-300  shadow-lg flex flex-col gap-2">
+        <div className="flex gap-4 lg:gap-8 ">
           <div>
-            <h1 className="font-bold text-lg lg:text-2xl text-white px-1 md:px-2 py-2 md:py-4 bg-blue-700 rounded-lg">
-              B.Sc.CSIT
-            </h1>
+            <div className="px-1 py-1 md:px-2 md:py-2 bg-blue-700">
+              <h1
+                className="font-bold text-lg lg:text-2xl text-white"
+              >
+                B.Sc.CSIT
+              </h1>
+            </div>
           </div>
-
-          <img className="h-16 md:h-20 w-16 md:w-20" src={Logo} alt="TU LOGO" />
+          <div>
+            <img
+              className="h-16 md:h-20 w-16 md:w-20"
+              src={Logo}
+              alt="TU LOGO"
+            />
+          </div>
         </div>
         <div>
           <h1 className="font-semibold text-xs md:text-sm text-center text-blue-700">
@@ -69,8 +78,8 @@ const Card = (props) => {
             <img className="h-16 w-44" src={Barcode} alt="" />
           </div>
         </div>
-        <div className="bg-blue-600 rounded-lg ">
-          <h1 className="text-2xl font-bold text-white text-center">
+        <div className="py-2">
+          <h1 className="text-lg lg:text-2xl font-bold text-white text-center text-blue-800">
             STUDENT IDENTITY CARD
           </h1>
         </div>
