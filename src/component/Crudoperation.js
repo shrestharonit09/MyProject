@@ -82,7 +82,7 @@ const Crudoperation = () => {
   
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="flex justify-center border border-green-800">
+      <div className="flex justify-center">
         <div className="flex flex-col gap-8 mt-8">
           <h1 className="text-center md:text-xl font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
             Let's fill the form to generate the individual card. Happy coding!!!
@@ -179,13 +179,13 @@ const Crudoperation = () => {
               <table className="table-auto w-[95vw] sm:w-full">
                 <thead>
                   <tr className="border border-gray-200 bg-white text-sm md:text-lg text-gray-500">
-                    <th className="text-left p-2  md:p-4">S.NO</th>
-                    <th className="text-left p-2  md:p-4">ID</th>
-                    <th className="text-left p-2  md:p-4">Name</th>
-                    <th className="text-left p-2  md:p-4">Address</th>
-                    <th className="text-left p-2  md:p-4">Age</th>
-                    <th className="text-center p-2 md:p-4">Action</th>
-                    <th className="text-center p-2 md:p-4">Image</th>
+                    <th className="text-left p-1 sm:p-2 md:p-4">S.NO</th>
+                    <th className="text-left p-1 sm:p-2 md:p-4">ID</th>
+                    <th className="text-left p-1 sm:p-2 md:p-4">Name</th>
+                    <th className="text-left p-1 sm:p-2 md:p-4">Address</th>
+                    <th className="text-left p-1 sm:p-2 md:p-4">Age</th>
+                    <th className="text-center p-1 sm:p-2 md:p-4">Action</th>
+                    <th className="text-center p-1 sm:p-2 md:p-4">Image</th>
                   </tr>
                 </thead>
                 <tbody>
