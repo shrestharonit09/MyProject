@@ -79,20 +79,7 @@ const Crudoperation = () => {
     setCard(user);
     setShowcard(!showcard);
   };
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
+  
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex justify-center border border-green-800">
