@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
 const Crudoperation = () => {
@@ -80,10 +79,23 @@ const Crudoperation = () => {
     setCard(user);
     setShowcard(!showcard);
   };
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="flex justify-center">
+      <div className="flex justify-center border border-green-800">
         <div className="flex flex-col gap-8 mt-8">
           <h1 className="text-center md:text-xl font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
             Let's fill the form to generate the individual card. Happy coding!!!
@@ -170,75 +182,77 @@ const Crudoperation = () => {
               </div>
             </div>
           </div>
-          <div>
-            <div className="bg-blue-500 shadow-lg rounded-t-lg p-2 flex justify-center">
-              <h1 className="font-semibold text-lg md:text-xl text-white">
-                List of register users
-              </h1>
-            </div>
-            <table className="table-auto w-[95vw] md:w-full">
-              <thead>
-                <tr className="border border-gray-200 bg-white text-sm md:text-lg text-gray-500">
-                  <th className="text-left p-2  md:p-4">S.NO</th>
-                  <th className="text-left p-2  md:p-4">ID</th>
-                  <th className="text-left p-2  md:p-4">Name</th>
-                  <th className="text-left p-2  md:p-4">Address</th>
-                  <th className="text-left p-2  md:p-4">Age</th>
-                  <th className="text-center p-2 md:p-4">Action</th>
-                  <th className="text-center p-2 md:p-4">Image</th>
-                </tr>
-              </thead>
-              <tbody>
-                {newdata.map((items, index) => (
-                  <tr className="border border-gray-200 bg-white" key={index}>
-                    <td className="text-sm md:text-lg text-left p-2 md:p-4">
-                      {index + 1}
-                    </td>
-                    <td className="text-sm md:text-lg text-left p-2 md:p-4">
-                      {items.ID}
-                    </td>
-                    <td className="text-sm md:text-lg text-left p-2 md:p-4">
-                      {items.Name}
-                    </td>
-                    <td className="text-sm md:text-lg text-left p-2 md:p-4">
-                      {items.Address}
-                    </td>
-                    <td className="text-sm md:text-lg text-left p-2 md:p-4">
-                      {items.Age}
-                    </td>
-                    <td className="flex gap-1 md:gap-2 mt-1 md:mt-2">
-                      <button
-                        className="bg-green-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
-                        onClick={() => handleEdit(items.ID)}
-                      >
-                        edit
-                      </button>
-                      <button
-                        className="bg-red-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
-                        onClick={() => handleDelete(items.ID)}
-                      >
-                        delete
-                      </button>
-                      <button
-                        className="bg-blue-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
-                        onClick={() => handleView(items.ID)}
-                      >
-                        View
-                      </button>
-                    </td>
-                    <td>
-                      <div className="flex justify-center">
-                        <img
-                          src={items.Image}
-                          alt="userimage"
-                          className="h-8 md:h-12 w-8 md:w-12 rounded-lg"
-                        />
-                      </div>
-                    </td>
+          <div className="flex justify-center">
+            <div className="w-[95vw] sm:w-full">
+              <div className="bg-blue-500 shadow-lg rounded-t-lg p-2">
+                <h1 className="font-semibold text-center text-lg md:text-xl text-white">
+                  List of register users
+                </h1>
+              </div>
+              <table className="table-auto w-[95vw] sm:w-full">
+                <thead>
+                  <tr className="border border-gray-200 bg-white text-sm md:text-lg text-gray-500">
+                    <th className="text-left p-2  md:p-4">S.NO</th>
+                    <th className="text-left p-2  md:p-4">ID</th>
+                    <th className="text-left p-2  md:p-4">Name</th>
+                    <th className="text-left p-2  md:p-4">Address</th>
+                    <th className="text-left p-2  md:p-4">Age</th>
+                    <th className="text-center p-2 md:p-4">Action</th>
+                    <th className="text-center p-2 md:p-4">Image</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {newdata.map((items, index) => (
+                    <tr className="border border-gray-200 bg-white" key={index}>
+                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                        {index + 1}
+                      </td>
+                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                        {items.ID}
+                      </td>
+                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                        {items.Name}
+                      </td>
+                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                        {items.Address}
+                      </td>
+                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                        {items.Age}
+                      </td>
+                      <td className="flex gap-1 md:gap-2 mt-1 md:mt-2">
+                        <button
+                          className="bg-green-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
+                          onClick={() => handleEdit(items.ID)}
+                        >
+                          edit
+                        </button>
+                        <button
+                          className="bg-red-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
+                          onClick={() => handleDelete(items.ID)}
+                        >
+                          delete
+                        </button>
+                        <button
+                          className="bg-blue-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
+                          onClick={() => handleView(items.ID)}
+                        >
+                          View
+                        </button>
+                      </td>
+                      <td>
+                        <div className="flex justify-center">
+                          <img
+                            src={items.Image}
+                            alt="userimage"
+                            className="h-8 md:h-12 w-8 md:w-12 rounded-lg"
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         {showcard ? (
