@@ -79,7 +79,7 @@ const Crudoperation = () => {
     setCard(user);
     setShowcard(!showcard);
   };
-
+  
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex justify-center">
@@ -169,58 +169,58 @@ const Crudoperation = () => {
               </div>
             </div>
           </div>
-          <div className="border border-green-800 w-[95vw] sm:w-full">
-            <div className="bg-blue-500 shadow-lg rounded-t-lg p-2">
-              <h1 className="font-semibold text-center text-lg md:text-xl text-white">
-                List of register users
-              </h1>
-            </div>
-            <div>
-              <table className="table-auto w-full">
+          <div className="flex justify-center">
+            <div className="w-[95vw]">
+              <div className="bg-blue-500 shadow-lg rounded-t-lg p-2">
+                <h1 className="font-semibold text-center text-md md:text-lg lg:text-2xl text-white">
+                  List of register users
+                </h1>
+              </div>
+              <table className="table-auto w-[95vw]">
                 <thead>
-                  <tr className="border border-gray-200 bg-white text-sm md:text-lg text-gray-500">
-                    <th className="text-left p-1 sm:p-2 md:p-4">S.NO</th>
-                    <th className="text-left p-1 sm:p-2 md:p-4">ID</th>
-                    <th className="text-left p-1 sm:p-2 md:p-4">Name</th>
-                    <th className="text-left p-1 sm:p-2 md:p-4">Address</th>
-                    <th className="text-left p-1 sm:p-2 md:p-4">Age</th>
-                    <th className="text-center p-1 sm:p-2 md:p-4">Action</th>
-                    <th className="text-center p-1 sm:p-2 md:p-4">Image</th>
+                  <tr className="border border-gray-200 bg-white text-sm sm:text-md md:text-lg lg:text-xl text-gray-500">
+                    <th className="text-left p-1 sm:p-2 lg:p-4">S.NO</th>
+                    <th className="text-left p-1 sm:p-2 lg:p-4">ID</th>
+                    <th className="text-left p-1 sm:p-2 lg:p-4">Name</th>
+                    <th className="text-left p-1 sm:p-2 lg:p-4">Address</th>
+                    <th className="text-left p-1 sm:p-2 lg:p-4">Age</th>
+                    <th className="text-center p-1 sm:p-2 lg:p-4">Action</th>
+                    <th className="text-center p-1 sm:p-2 lg:p-4">Image</th>
                   </tr>
                 </thead>
                 <tbody>
                   {newdata.map((items, index) => (
                     <tr className="border border-gray-200 bg-white" key={index}>
-                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                      <td className="text-sm sm:text-sm md:text-md lg:text-lg text-left p-2 md:p-4">
                         {index + 1}
                       </td>
-                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                      <td className="text-sm sm:text-sm md:text-md lg:text-lg text-left p-2 md:p-4">
                         {items.ID}
                       </td>
-                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                      <td className="text-sm sm:text-sm md:text-md lg:text-lg text-left p-2 md:p-4 break-all">
                         {items.Name}
                       </td>
-                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                      <td className="text-sm sm:text-sm md:text-md lg:text-lg text-left p-2 md:p-4 break-all">
                         {items.Address}
                       </td>
-                      <td className="text-sm md:text-lg text-left p-2 md:p-4">
+                      <td className="text-sm sm:text-sm md:text-md lg:text-lg text-left p-2 md:p-4">
                         {items.Age}
                       </td>
-                      <td className="flex gap-1 md:gap-2 mt-1 md:mt-2">
+                      <td className="flex justify-center gap-1 p-2 md:p-4">
                         <button
-                          className="bg-green-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
+                          className="bg-green-500 rounded-lg p-1 md:p-2 text-sm sm:text-md md:text-lg lg:text-xl"
                           onClick={() => handleEdit(items.ID)}
                         >
                           edit
                         </button>
                         <button
-                          className="bg-red-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
+                          className="bg-red-500 rounded-lg p-1 md:p-2text-sm sm:text-md md:text-lg lg:text-xl"
                           onClick={() => handleDelete(items.ID)}
                         >
                           delete
                         </button>
                         <button
-                          className="bg-blue-500 rounded-lg p-1 md:p-2 text-sm md:text-xl"
+                          className="bg-blue-500 rounded-lg p-1 md:p-2 text-sm sm:text-md md:text-lg lg:text-xl"
                           onClick={() => handleView(items.ID)}
                         >
                           View
