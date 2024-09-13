@@ -34,28 +34,12 @@ const Login = (props) => {
       setUsernamerequired("Valid Username required before reseting password");
     }
   };
-   
-  //reponsive..
-  // const [width, setWidth] = useState(window.innerWidth);
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setWidth(window.innerWidth);
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-  // console.log(width);
-
   return (
     <div className="flex justify-center min-h-screen items-center bg-gray-100">
-      <div className="w-2/3 md:w-1/3 lg:w-1/4 shadow-lg bg-white rounded-lg">
-        <div className="flex flex-col p-4 gap-2">
+      <div className="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-lg">
+        <div className="flex flex-col p-4 gap-2 ">
           <h1 className="text-3xl text-center font-semibold">Login</h1>
-          <label className="text-gray-600" htmlFor="Username">
+          <label className="text-gray-500" htmlFor="Username">
             Email
           </label>
           <input
@@ -68,7 +52,7 @@ const Login = (props) => {
             required
           />
           <p className="text-sm text-red-600">{usernamerequired}</p>
-          <label className="text-gray-600" htmlFor="Password">
+          <label className="text-gray-500" htmlFor="Password">
             Password
           </label>
           <input
@@ -105,3 +89,4 @@ const Login = (props) => {
 };
 
 export default Login;
+

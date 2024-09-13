@@ -79,7 +79,7 @@ const Crudoperation = () => {
     setCard(user);
     setShowcard(!showcard);
   };
-  
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex justify-center">
@@ -169,14 +169,14 @@ const Crudoperation = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
-            <div className="w-[95vw] sm:w-full">
-              <div className="bg-blue-500 shadow-lg rounded-t-lg p-2">
-                <h1 className="font-semibold text-center text-lg md:text-xl text-white">
-                  List of register users
-                </h1>
-              </div>
-              <table className="table-auto w-[95vw] sm:w-full">
+          <div className="border border-green-800 w-[95vw] sm:w-full">
+            <div className="bg-blue-500 shadow-lg rounded-t-lg p-2">
+              <h1 className="font-semibold text-center text-lg md:text-xl text-white">
+                List of register users
+              </h1>
+            </div>
+            <div>
+              <table className="table-auto w-full">
                 <thead>
                   <tr className="border border-gray-200 bg-white text-sm md:text-lg text-gray-500">
                     <th className="text-left p-1 sm:p-2 md:p-4">S.NO</th>
