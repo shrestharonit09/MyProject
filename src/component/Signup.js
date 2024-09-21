@@ -31,7 +31,9 @@
 
       if (data.CRPassword !== data.COPassword) {
         setPasswordvalidation("password should be matched");
-      } else setPasswordvalidation("");
+      } else {setPasswordvalidation("");}
+
+      const existUser=JSON.parse(localStorage.getItem("users"))||[];
 
       if (
         data.phone.length === 10 &&
@@ -41,13 +43,17 @@
         data.Address &&
         data.email
       ) {
+        const newUser={
+          fname:data.firstname,
+          lname:data.surname,
+          email: data.email,
+          password: data.CRPassword,
+          phone: data.phone,
+        }
+        const systemUser=[...existUser,newUser];
         localStorage.setItem(
           "users",
-          JSON.stringify({
-            email: data.email,
-            password: data.CRPassword,
-            phone: data.phone,
-          })
+          JSON.stringify(systemUser)
         );
         props.login();
       } else {

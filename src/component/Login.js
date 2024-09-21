@@ -1,24 +1,27 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
+import { RxCross1 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const [logindata, setLogindata] = useState({
     email: "",
     password: "",
   });
 
   const [usernamerequired, setUsernamerequired] = useState("");
-  const navigate = useNavigate();
 
   const handleLogin = () => {
-    const Userdata = JSON.parse(localStorage.getItem("users"));
-    if (Userdata) {
-      if (
-        logindata.email === Userdata.email &&
-        logindata.password === Userdata.password
-      ) {
+    const storedData = JSON.parse(localStorage.getItem("users")) || [];
+    const userData = storedData.find(
+      (value) =>
+        value.email === logindata.email && value.password === logindata.password
+    );
+    if (storedData) {
+      if (userData) {
         alert("valid");
-        navigate("/crud");
+        props.authhome(); //true dinxa ani home kk xa sabai show hunxa
+        navigate("/"); // esle chai home mai navigate garauxa
       } else {
         alert("invalid");
       }
@@ -38,7 +41,14 @@ const Login = (props) => {
     <div className="flex justify-center min-h-screen items-center bg-gray-100">
       <div className="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-lg">
         <div className="flex flex-col p-4 gap-2 ">
+          <button
+            className="flex justify-end hover:text-red-500"
+            onClick={props.authhome}
+          >
+            <RxCross1 />
+          </button>
           <h1 className="text-3xl text-center font-semibold">Login</h1>
+
           <label className="text-gray-500" htmlFor="Username">
             Email
           </label>
@@ -89,4 +99,3 @@ const Login = (props) => {
 };
 
 export default Login;
-
