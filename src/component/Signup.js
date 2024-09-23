@@ -37,7 +37,7 @@
 
       if (
         data.phone.length === 10 &&
-        data.CRPassword === data.COPassword &&
+        data.CRPassword && data.COPassword &&
         data.firstname &&
         data.surname &&
         data.Address &&
