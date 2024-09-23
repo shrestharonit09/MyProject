@@ -18,8 +18,8 @@ const Navbar = (props) => {
   const handleSidebar = () => {
     setShowsidebar(!showsidebar);
   };
-  const Userdata = JSON.parse(localStorage.getItem("users"))||[];
-  console.log("datatatata",Userdata)
+  const Userdata = JSON.parse(localStorage.getItem("login"));
+  
   return (
     <div>
       <div
@@ -89,13 +89,15 @@ const Navbar = (props) => {
           ) : (
             ""
           )}
-          <div>
+          <div className="flex gap-2">
+            <div>
             {Userdata && (
-              <h1 className="flex gap-1">
-                {Userdata.fname}
-                {Userdata.lname}
-              </h1>
+              <div className="flex gap-2 py-1 text-lg">
+                <h1>{Userdata.fname}</h1>
+               <h1> {Userdata.lname}</h1>
+              </div>
             )}
+            </div>
             <div className={`${width > 850 ? " " : "flex gap-4"}`}>
               <IoPersonCircleSharp size={40} onClick={props.loginshow} />
               {width <= 850 && (

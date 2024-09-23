@@ -6,19 +6,21 @@ const Reset = (props) => {
     Newpassword: "",
     Confirmpassword: "",
   });
-  console.log(resetdata);
+
   const handlePasswordreset = () => {
-    const Userdata = JSON.parse(localStorage.getItem("users"));
-    if (Userdata) {
-      if (resetdata.phone === Userdata.phone) {
+    const Storedata = JSON.parse(localStorage.getItem("users")) || [];
+    const UserIndex = Storedata.findIndex(
+      (value) => value.phone === resetdata.phone
+    );
+    if (Storedata) {
+      if (UserIndex !== -1) {
         if (resetdata.Newpassword === resetdata.Confirmpassword) {
-          localStorage.setItem(
-            "users",
-            JSON.stringify({
-              ...Userdata,
-              password: resetdata.Newpassword,
-            })
-          );
+          const updateData = {
+            ...Storedata[UserIndex],
+            password: resetdata.Newpassword,
+          };
+          Storedata[UserIndex] = updateData;
+          localStorage.setItem("users", JSON.stringify(Storedata));
           alert("password has been reset successfully");
           props.loginreset();
         } else {
@@ -53,7 +55,6 @@ const Reset = (props) => {
             onChange={(event) =>
               setResetdata({ ...resetdata, phone: event.target.value })
             }
-           
             required
           />
           <label className="text-gray-500" htmlFor="Username">
@@ -66,7 +67,6 @@ const Reset = (props) => {
             onChange={(event) =>
               setResetdata({ ...resetdata, Newpassword: event.target.value })
             }
-           
             required
           />
           <label className="text-gray-500" htmlFor="Username">
@@ -82,7 +82,6 @@ const Reset = (props) => {
                 Confirmpassword: event.target.value,
               })
             }
-           
             required
           />
           <div className="flex justify-center">

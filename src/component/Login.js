@@ -13,10 +13,13 @@ const Login = (props) => {
 
   const handleLogin = () => {
     const storedData = JSON.parse(localStorage.getItem("users")) || [];
+    console.log("dataaaaaaaaa", storedData);
     const userData = storedData.find(
       (value) =>
         value.email === logindata.email && value.password === logindata.password
     );
+    //login ko data localstorage mai feri store gareko...key=login ma pathako
+    localStorage.setItem("login", JSON.stringify(userData));
     if (storedData) {
       if (userData) {
         alert("valid");
@@ -30,8 +33,10 @@ const Login = (props) => {
     }
   };
   const handleForgetpassword = () => {
-    const Userdata = JSON.parse(localStorage.getItem("users"));
-    if (logindata.email && logindata.email === Userdata.email) {
+    const Storedata = JSON.parse(localStorage.getItem("users")) || [];
+    const Userdata = Storedata.find((value) => value.email === logindata.email);
+
+    if (logindata.email && Userdata) {
       props.reset();
     } else {
       setUsernamerequired("Valid Username required before reseting password");
