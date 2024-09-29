@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { globalContext } from "../ContextAPI/NoteState";
 import RS from "../Image/RS.png";
+import Ronit from "../Image/ronit.png";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Sidebar from "./Sidebar";
 import { NavLink } from "react-router-dom";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { RiLogoutBoxRLine } from "react-icons/ri";
+import { IoSettingsSharp } from "react-icons/io5";
 
 const Navbar = (props) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [showsidebar, setShowsidebar] = useState(false);
+  const[dropdown, setDropdown]=useState(false)
+  const { isLogin,handleIslogin } = useContext(globalContext);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -19,7 +26,14 @@ const Navbar = (props) => {
     setShowsidebar(!showsidebar);
   };
   const Userdata = JSON.parse(localStorage.getItem("login"));
-  
+
+  const handleDropdown=()=>{
+    setDropdown(!dropdown);
+  }
+  const handleLogout=()=>{
+    handleIslogin(false)
+  }
+
   return (
     <div>
       <div
@@ -90,16 +104,58 @@ const Navbar = (props) => {
             ""
           )}
           <div className="flex gap-2">
-            <div>
-            {Userdata && (
+            {isLogin ? (
+              <div>
+                {Userdata && (
+                  <div className="flex gap-2 py-1 text-lg">
+                    <h1>{Userdata.fname}</h1>
+                    <h1> {Userdata.lname}</h1>
+                  </div>
+                )}
+              </div>
+            ) : (
               <div className="flex gap-2 py-1 text-lg">
-                <h1>{Userdata.fname}</h1>
-               <h1> {Userdata.lname}</h1>
+                <h1>Guest</h1>
               </div>
             )}
-            </div>
+
             <div className={`${width > 850 ? " " : "flex gap-4"}`}>
-              <IoPersonCircleSharp size={40} onClick={props.loginshow} />
+              {isLogin ? (
+                <div className="relative" onClick={handleDropdown}>
+                  <img
+                    className="rounded-full"
+                    src={Ronit}
+                    height={40}
+                    width={40}
+                    alt="RonitLogo"
+                  />
+                  <div className="absolute bottom-0 right-0 rounded-full bg-white text-md">
+                    <IoMdArrowDropdown />
+                  </div>
+                  {dropdown &&
+                  <div className="absolute right-0 mt-3 shadow-lg border border-gray-300 px-1 py-4 bg-white rounded-lg flex flex-col gap-4 w-48">
+                    <button className="hover:bg-gray-300 rounded-lg px-2 py-1" onClick={handleLogout}>
+                      <div className="flex gap-4 items-center">
+                        <div className="rounded-full border border-gray-300 p-2 bg-gray-200">
+                          <RiLogoutBoxRLine className="text-black text-xl" />
+                        </div>
+                        <h1 className="text-lg font-semibold">Log Out</h1>
+                      </div>
+                    </button>
+                    <button className="hover:bg-gray-300 rounded-lg px-2 py-1">
+                      <div className="flex gap-4 items-center">
+                        <div className="rounded-full border border-gray-300 p-2 bg-gray-200">
+                          <IoSettingsSharp className="text-black text-xl" />
+                        </div>
+                        <h1 className="text-lg font-semibold">Setting</h1>
+                      </div>
+                    </button>
+                  </div>}
+                </div>
+              ) : (
+                <IoPersonCircleSharp size={40} onClick={props.loginshow} />
+              )}
+
               {width <= 850 && (
                 <HiOutlineBars3
                   size={30}

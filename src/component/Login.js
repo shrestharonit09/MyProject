@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
+import{globalContext} from "../ContextAPI/NoteState";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -10,10 +11,12 @@ const Login = (props) => {
   });
 
   const [usernamerequired, setUsernamerequired] = useState("");
+  const{handleIslogin}=useContext(globalContext)
+  
 
   const handleLogin = () => {
     const storedData = JSON.parse(localStorage.getItem("users")) || [];
-    console.log("dataaaaaaaaa", storedData);
+  
     const userData = storedData.find(
       (value) =>
         value.email === logindata.email && value.password === logindata.password
@@ -23,6 +26,7 @@ const Login = (props) => {
     if (storedData) {
       if (userData) {
         alert("valid");
+        handleIslogin(true);
         props.authhome(); //true dinxa ani home kk xa sabai show hunxa
         navigate("/"); // esle chai home mai navigate garauxa
       } else {
