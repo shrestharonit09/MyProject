@@ -13,8 +13,8 @@ import { IoSettingsSharp } from "react-icons/io5";
 const Navbar = (props) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [showsidebar, setShowsidebar] = useState(false);
-  const[dropdown, setDropdown]=useState(false)
-  const { isLogin,handleIslogin } = useContext(globalContext);
+ 
+  const { isLogin,handleIslogin,dropdown,handleDropdown} = useContext(globalContext);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -27,9 +27,7 @@ const Navbar = (props) => {
   };
   const Userdata = JSON.parse(localStorage.getItem("login"));
 
-  const handleDropdown=()=>{
-    setDropdown(!dropdown);
-  }
+  
   const handleLogout=()=>{
     handleIslogin(false)
   }
@@ -44,8 +42,8 @@ const Navbar = (props) => {
         {width <= 850 && <Sidebar closeSidebar={handleSidebar} />}
       </div>
 
-      <div className="border border-gray-300 bg-gray-100 px-12 py-3 shadow-lg">
-        <div className="flex justify-between">
+      <div className="fixed w-full top-0 border border-gray-300 bg-gray-200 px-12 py-3 shadow-lg">
+        <div className="flex justify-between items-center">
           <div>
             <img
               className="rounded-full"
@@ -103,7 +101,7 @@ const Navbar = (props) => {
           ) : (
             ""
           )}
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             {isLogin ? (
               <div>
                 {Userdata && (
@@ -122,6 +120,7 @@ const Navbar = (props) => {
             <div className={`${width > 850 ? " " : "flex gap-4"}`}>
               {isLogin ? (
                 <div className="relative" onClick={handleDropdown}>
+                  <button className="hover:opacity-90 active:scale-90 rounded-full transition duration-500 ease-in-out">
                   <img
                     className="rounded-full"
                     src={Ronit}
@@ -129,9 +128,10 @@ const Navbar = (props) => {
                     width={40}
                     alt="RonitLogo"
                   />
-                  <div className="absolute bottom-0 right-0 rounded-full bg-white text-md">
+                  </button>
+                  <button className="absolute bottom-0 right-0 rounded-full bg-white text-md">
                     <IoMdArrowDropdown />
-                  </div>
+                  </button>
                   {dropdown &&
                   <div className="absolute right-0 mt-3 shadow-lg border border-gray-300 px-1 py-4 bg-white rounded-lg flex flex-col gap-4 w-48">
                     <button className="hover:bg-gray-300 rounded-lg px-2 py-1" onClick={handleLogout}>
