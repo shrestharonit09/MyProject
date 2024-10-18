@@ -73,12 +73,12 @@ const Navbar = (props) => {
                   ID Card{" "}
                 </NavLink>
                 <NavLink
-                  to="/notebook"
+                  to="/news"
                   className={({ isActive }) =>
                     isActive ? "text-blue-600" : "hover:text-blue-600"
                   }
                 >
-                  Notebook{" "}
+                  News
                 </NavLink>
                 <NavLink
                   to="/about"
