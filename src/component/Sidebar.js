@@ -27,10 +27,10 @@ const Sidebar = (props) => {
       </NavLink>
       <NavLink
         onClick={props.closeSidebar}
-        to="/notebook"
+        to="/news"
         className="hover:text-sky-300"
       >
-        Notebook
+        News
       </NavLink>
       <NavLink
         onClick={props.closeSidebar}

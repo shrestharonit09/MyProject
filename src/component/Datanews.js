@@ -11,8 +11,8 @@ const Datanews = (props) => {
   //  const desclength=minlength(data.map((value)=>value.description))
 
   return (
-    <div className="flex justify-center ml-12">
-      <div className="grid grid-cols-3 gap-8 w-3/4">
+    <div className="flex justify-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 w-3/5 sm:w-1/2 md:w-2/5 lg:w-2/3 xl:w-3/4">
         {data
           // .filter((value) => value.urlToImage && value.description)
           .map((value) => (

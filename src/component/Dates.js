@@ -45,32 +45,60 @@ const Dates = () => {
   };
 
   useEffect(() => {
-    if (hour > 12) {
+    if (hour > 11) {
       setTime("PM");
     } else {
       setTime("AM");
     }
   }, [hour]);
+  const [width, setWidth] = useState(window.innerWidth);
+  console.log(width);
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <div className="flex gap-4 text-lg">
-      <div className="mt-1 text-xl">
-        <FaRegClock />
-      </div>
-      <div className="flex gap-2">
-        <span className="font-semibold">{days[day]},</span>
-        <span>
-          {today < 10 ? "0" : ""}
-          {today}
-        </span>
-        <span>{months[month + 1]}</span>
-        <span>{year}</span>
-      </div>
-      <span>|</span>
-      <div className="flex gap-1">
-        <span>{hour}</span>:<span>{minutes<10?"0":""}{minutes}</span>
-        <span>{time}</span>
-      </div>
+    <div>
+      {width >1280 ? (
+        <div className="flex gap-1 sm:gap-4 text-sm sm:text-lg items-center">
+          <div className="mt-1">
+            <FaRegClock />
+          </div>
+          <div className="flex gap-1 sm:gap-2">
+            <span className="font-semibold">{days[day]},</span>
+            <span>
+              {today < 10 ? "0" : ""}
+              {today}
+            </span>
+            <span>{months[month + 1]}</span>
+            <span>{year}</span>
+          </div>
+          <span>|</span>
+          <div className="flex gap-1">
+            <span>{hour}</span>:
+            <span>
+              {minutes < 10 ? "0" : ""}
+              {minutes}
+            </span>
+            <span>{time}</span>
+          </div>
+          
+        </div>
+      ) : (
+        <div className="text-sm sm:text-md md:text-lg">
+          <div className="flex gap-1">
+            <span>{hour}</span>:
+            <span>
+              {minutes < 10 ? "0" : ""}
+              {minutes}
+            </span>
+            <span>{time}</span>
+          </div>
+          <div className="font-semibold text-center">{days[day]}</div>
+        </div>
+      )}
     </div>
   );
 };

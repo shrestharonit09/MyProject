@@ -2,7 +2,7 @@ import React from "react";
 const Cardnews = (props) => {
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col border rounded-lg bg-gray-100 shadow-lg w-full h-full">
+      <div className="flex flex-col border rounded-lg bg-gray-100 shadow-lg h-full">
         <img
           className="h-44 w-full object-cover rounded-t-lg"
           src={props.image}
@@ -14,7 +14,7 @@ const Cardnews = (props) => {
               ? props.title.slice(0, 50) + "..."
               : props.title}
           </h1>
-          <div className="flex-grow">
+          <div>
             <p className="lg:py-1 sm:text-base md:text-md">
               {props.description?.length >50
                 ? props.description.slice(0,50) + "..."
