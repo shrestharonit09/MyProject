@@ -21,7 +21,7 @@ const App = () => {
                   setShowlogin(true);
                 }}
               />
-              <div className="mt-[68px]">
+              <div className="mt-[65px]">
                 <Routing/>
               </div>
             </div>

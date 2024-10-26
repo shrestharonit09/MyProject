@@ -14,11 +14,11 @@ const Home = () => {
     }
   };
   return (
-    <div className="p-8 flex justify-around items-center">
+    <div className="flex flex-col md:flex-row gap-8 sm:gap-4 md:justify-around items-center py-8">
       <button onClick={handlePrevious} className='p-2 rounded-full bg-blue-500 hover:bg-blue-600'>
-        <FaArrowLeft size={25} className="text-gray-300"/>
+        <FaArrowLeft className="text-gray-300 text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"/>
       </button>
-      <div className="text-5xl font-bold flex flex-col gap-4">
+      <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold flex flex-col gap-2 md:gap-4">
         <h1 className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent text-center">
           {info[index].word1}
         </h1>
@@ -36,11 +36,11 @@ const Home = () => {
         <img
           src={info[index].image}
           alt="FrontImage"
-          className="rounded-full h-[550px] w-[550px] shadow-lg border-2 border-gray-300 shadow-purple-500"
+          className="rounded-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px]  xl:h-[550px] w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] xl:w-[550px] shadow-lg border-2 border-gray-300 shadow-purple-500"
         />
       </div>
       <button onClick={handleNext} className='p-2 rounded-full bg-blue-500 hover:bg-blue-600'>
-        <FaArrowRight size={25} className="text-gray-300"/>
+        <FaArrowRight className="text-gray-300 text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"/>
       </button>
     </div>
   );

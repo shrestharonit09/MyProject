@@ -81,9 +81,9 @@ const Crudoperation = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="bg-gray-100">
       <div className="flex justify-center">
-        <div className="flex flex-col gap-8 mt-8">
+        <div className="flex flex-col gap-8">
           <h1 className="text-center md:text-xl font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
             Let's fill the form to generate the individual card. Happy coding!!!
           </h1>
