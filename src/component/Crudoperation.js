@@ -213,7 +213,7 @@ const Crudoperation = () => {
                         {items.Age}
                       </td>
                       
-                      <td className={`flex ${width<=374?"flex-col":"flex-col"} justify-center gap-1 p-2 md:p-4`}>
+                      <td className={`flex ${width<=374?"flex-col":"flex-row"} justify-center gap-1 p-2 md:p-4`}>
                         <button
                           className="bg-green-500 rounded-lg p-1 md:p-2 text-sm sm:text-md md:text-lg lg:text-xl"
                           onClick={() => handleEdit(items.ID)}
