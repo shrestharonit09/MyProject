@@ -14,6 +14,12 @@ const Crudoperation = () => {
   const [isEdit, setIsedit] = useState(false); // first ma submit dekhaune ..
   const [cards, setCard] = useState();
   const [showcard, setShowcard] = useState(false);
+  const[width,setWidth]=useState(window.innerWidth)
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (ims.Image && ims.Image instanceof Blob) {
@@ -170,7 +176,7 @@ const Crudoperation = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="w-[95vw]">
+            <div className={`${width<=374?"w-[100vw]":"w-[95vw]"} overflow-auto`}>
               <div className="bg-blue-500 shadow-lg rounded-t-lg p-2">
                 <h1 className="font-semibold text-center text-md md:text-lg lg:text-2xl text-white">
                   List of register users
@@ -206,7 +212,8 @@ const Crudoperation = () => {
                       <td className="text-sm sm:text-sm md:text-md lg:text-lg text-left p-2 md:p-4">
                         {items.Age}
                       </td>
-                      <td className="flex justify-center gap-1 p-2 md:p-4">
+                      
+                      <td className={`flex ${width<=374?"flex-col":"flex-col"} justify-center gap-1 p-2 md:p-4`}>
                         <button
                           className="bg-green-500 rounded-lg p-1 md:p-2 text-sm sm:text-md md:text-lg lg:text-xl"
                           onClick={() => handleEdit(items.ID)}
