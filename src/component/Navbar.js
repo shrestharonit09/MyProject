@@ -39,7 +39,7 @@ const Navbar = (props) => {
           showsidebar ? "-translation-x-0" : "translate-x-full"
         } transition-transform duration-1000 ease-in-out`}
       >
-        {width <= 850 && <Sidebar closeSidebar={handleSidebar} />}
+        {width < 1050 && <Sidebar closeSidebar={handleSidebar} />}
       </div>
 
       <div className="fixed w-full top-0 border border-gray-300 bg-gray-200 px-12 py-3 shadow-lg">
@@ -53,7 +53,7 @@ const Navbar = (props) => {
               alt="RonitShresthaLogo"
             />
           </div>
-          {width > 850 ? (
+          {width > 1050 ? (
             <div className="w-1/2">
               <div className="flex justify-around text-xl text-gray-500 font-semibold">
                 <NavLink
@@ -80,6 +80,15 @@ const Navbar = (props) => {
                 >
                   News
                 </NavLink>
+                <NavLink
+                  to="/weather"
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-600" : "hover:text-blue-600"
+                  }
+                >
+                  Weather
+                </NavLink>
+                
                 <NavLink
                   to="/about"
                   className={({ isActive }) =>
@@ -117,7 +126,7 @@ const Navbar = (props) => {
               </div>
             )}
 
-            <div className={`${width > 850 ? " " : "flex gap-4"}`}>
+            <div className={`${width > 1050 ? " " : "flex gap-4"}`}>
               {isLogin ? (
                 <div className="relative" onClick={handleDropdown}>
                   <button className="hover:opacity-90 active:scale-90 rounded-full transition duration-500 ease-in-out">
@@ -156,7 +165,7 @@ const Navbar = (props) => {
                 <IoPersonCircleSharp size={40} onClick={props.loginshow} />
               )}
 
-              {width <= 850 && (
+              {width <=1050 && (
                 <HiOutlineBars3
                   size={30}
                   className="mt-1"

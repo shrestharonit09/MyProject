@@ -6,6 +6,7 @@ import About from "./About";
 import Contact from "./Contact";
 import { globalContext } from "../ContextAPI/NoteState";
 import News from "./News";
+import Weather from "./Weather";
 
 const Routing = () => {
     const {handleallcompdropdown}=useContext(globalContext)
@@ -16,6 +17,7 @@ const Routing = () => {
       <Route path="/crud" element={<Crudoperation />}></Route>
       <Route path="/" element={<Home />}></Route>
       <Route path="/news" element={<News/>}></Route>
+      <Route path="/weather" element={<Weather/>}></Route>
       <Route path="/about" element={<About />}></Route>
       <Route path="/contact" element={<Contact />}></Route>
     </Routes>

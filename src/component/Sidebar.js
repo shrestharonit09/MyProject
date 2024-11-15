@@ -34,6 +34,13 @@ const Sidebar = (props) => {
       </NavLink>
       <NavLink
         onClick={props.closeSidebar}
+        to="/weather"
+        className="hover:text-sky-300"
+      >
+        Weather
+      </NavLink>
+      <NavLink
+        onClick={props.closeSidebar}
         to="/about"
         className="hover:text-sky-300"
       >
