@@ -176,7 +176,7 @@ const Crudoperation = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className={`${width<=375?"w-[100vw]":"w-[95vw]"} overflow-auto`}>
+            <div className={`${width<=426?"w-[100vw]":"w-[95vw]"} overflow-auto`}>
               <div className="bg-blue-500 shadow-lg rounded-t-lg p-2">
                 <h1 className="font-semibold text-center text-md md:text-lg lg:text-2xl text-white">
                   List of register users
@@ -213,7 +213,7 @@ const Crudoperation = () => {
                         {items.Age}
                       </td>
                       
-                      <td className={`flex ${width<=375?"flex-col":"flex-row"} justify-center gap-1 p-2 md:p-4`}>
+                      <td className={`flex ${width<=426?"flex-col":"flex-row"} justify-center gap-1 p-2 md:p-4`}>
                         <button
                           className="bg-green-500 rounded-lg p-1 md:p-2 text-sm sm:text-md md:text-lg lg:text-xl"
                           onClick={() => handleEdit(items.ID)}
